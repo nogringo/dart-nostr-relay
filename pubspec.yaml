@@ -1,7 +1,11 @@
 name: nostr_relay
 description: Embeddable Dart Nostr relay with NIP-01, NIP-42, NIP-59 and NIP-77 support.
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/nogringo/dart-nostr-relay
+
+topics:
+  - nostr
+  - relay
 
 environment:
   sdk: ^3.12.1
