@@ -1,15 +1,20 @@
 name: nostr_relay
-description: A starting point for Dart libraries or applications.
+description: Embeddable Dart Nostr relay with NIP-01, NIP-42, NIP-59 and NIP-77 support.
 version: 1.0.0
 # repository: https://github.com/my_org/my_repo
 
 environment:
   sdk: ^3.12.1
 
-# Add regular dependencies here.
 dependencies:
-  # path: ^1.9.0
+  args: ^2.7.0
+  bip340: ^0.3.1
+  convert: ^3.1.2
+  crypto: ^3.0.7
+  sqlite3: ^3.3.1
 
 dev_dependencies:
   lints: ^6.0.0
+  ndk: ^0.8.3
   test: ^1.25.6
+  web_socket_channel: ^3.0.3

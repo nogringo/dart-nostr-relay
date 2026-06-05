@@ -1,39 +1,32 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# nostr_relay
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/tools/pub/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Embeddable Dart Nostr relay for local-first Dart and Flutter native apps.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- NIP-01 WebSocket relay flow: `EVENT`, `REQ`, `CLOSE`, `OK`, `EOSE`, `CLOSED`, `NOTICE`
+- NIP-42 authentication challenges
+- NIP-59 gift wrap routing with recipient-only reads for `kind:1059`
+- NIP-77 Negentropy responder implemented locally
+- Persistent SQLite storage
 
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Flutter native apps should add `sqlite3_flutter_libs` in the host app and pass an
+app-owned database path to `NostrRelayConfig`.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
 ```dart
-const like = 'sample';
+final relay = await LocalNostrRelay.start(
+  const NostrRelayConfig(databasePath: 'local_relay.sqlite3'),
+);
+
+print(relay.uri);
+
+await relay.stop();
 ```
 
-## Additional information
+Run as a standalone relay:
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```sh
+dart run bin/nostr_relay.dart --port 7777 --database nostr_relay.sqlite3
+```

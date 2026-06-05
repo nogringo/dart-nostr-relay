@@ -1,6 +1,9 @@
 import 'package:nostr_relay/nostr_relay.dart';
 
-void main() {
-  var awesome = Awesome();
-  print('awesome: ${awesome.isAwesome}');
+Future<void> main() async {
+  final relay = await LocalNostrRelay.start(
+    const NostrRelayConfig(databasePath: ':memory:'),
+  );
+  print('relay listening on ${relay.uri}');
+  await relay.stop();
 }
